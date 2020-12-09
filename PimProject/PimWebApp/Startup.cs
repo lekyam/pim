@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Security.Claims;
 using PimWebApp.Data;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,25 @@ namespace PimWebApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddAuthentication("Cookies").AddCookie(opt =>
+            {
+                opt.Cookie.Name = "TryingoutGoogleOAuth";
+                opt.LoginPath = "/auth/google-login";
+            })
+            .AddGoogle(opt =>
+            {
+                opt.ClientId = Configuration["Google:Id"];
+                opt.ClientSecret = Configuration["Google:Secret"];
+                opt.Scope.Add("profile");
+                opt.Events.OnCreatingTicket = context =>
+                {
+                    string picuri = context.User.GetProperty("picture").GetString();
+
+                    context.Identity.AddClaim(new Claim("picture", picuri));
+                    return Task.CompletedTask;
+
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,8 +70,12 @@ namespace PimWebApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

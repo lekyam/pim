@@ -5,3 +5,31 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+<a href="auth/google-login" class="btn btn-secondary"> Inicia Sesión</a>
+
+<AuthorizeView>
+    <Authorized>
+        <h3>
+            hola, @context.User.Identity.Name
+        </h3>
+        @foreach (var item in context.User.Claims)
+        {
+            <h2>
+                @if (@item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")
+                {
+                    string a = "Nombre: ";
+                    @a @item.Value
+                }
+                @if (@item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")
+                {
+                    string a = "Correo: ";
+                    @a @item.Value
+                }
+            </h2>
+        }
+        <img src="@context.User.Claims.Where(s => s.Type == "picture").FirstOrDefault().Value" />
+
+    </Authorized>
+
+</AuthorizeView>
