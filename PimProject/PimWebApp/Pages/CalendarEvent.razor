@@ -1,0 +1,29 @@
+﻿@page "/calendar"
+<Cabecera></Cabecera>
+<BarraBusqueda></BarraBusqueda>
+<div class="menuCostado">
+    <button>
+        <AuthorizeView>
+            <Authorized>
+                @foreach (var item in context.User.Claims)
+                {
+                    <h6 id="nombreUser">
+                        @if (@item.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")
+                        {
+                            @item.Value
+                        }
+                    </h6>
+                }   
+            </Authorized>
+        </AuthorizeView>
+    </button>
+    <button>Tareas</button>
+    <button>Cumpleaños</button>
+    <button>Recordatorios</button>
+</div>
+<div class="events">
+</div>
+@code{
+
+
+}

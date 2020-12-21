@@ -8,19 +8,12 @@ body {
 }
 header {
     background:rgb(197, 25, 25);
-    width: 1365px;
+    width: 100%;
     height: 130px;
     font-weight:bold; 
-    margin-left: -32px;
-    position:sticky;
-    
+    display:flex;
 } 
-::-webkit-scrollbar {
-    display: none;
-}
-.costadoIzq div{
-    display: inline-block;
-}
+
 .title{
     margin-top: 30px;
 }
@@ -28,7 +21,7 @@ header {
     position: absolute;
     height: 70px;
     margin: 25px;
-    margin-top: -20px;
+    margin-top: 20px;
     border-radius:10px;
 }
 #titlePIM{
@@ -46,15 +39,11 @@ header {
 }
 
 .costadoDer{
-    position: absolute;
     margin-left: 82%;
-    margin-top: -45px;
-    text-align:center;
-    padding-bottom:-15px;
-   
+    text-align:center;   
 }
 .costadoDer a {
-    margin-top:30px;
+    margin-top:40px;
     color: white;
     background-color: rgb(22, 155, 213);
     font-size: 15px;
@@ -114,6 +103,7 @@ header {
     margin-top:-5px;
 }
 #imagenPerfil {
+   margin-top:5px;
     width:60px;
     border-radius:150px;  
  }
@@ -139,26 +129,114 @@ header {
     background-color:aliceblue;
 }
 .cabeceraIzq img{
-    height:80px;
+    height:60px;
     position:absolute;
-    margin:20px;
+    margin:35px;
     border-radius:150px;
 }
 .cabeceraMid {
-    position:absolute;
-    margin-top:40px;
-    margin-left:28%;
-   
+    position: absolute;
+    margin-top: 40px;
+    margin-left: 20%;
+    display: flex;
+    background-color: white;
+    border-radius:5px;
 }
-#cabeceraPerfil img {
-    margin-top: 50px;
+.cabeceraMid a {
+    height: 50px;
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    line-height: 50px;
+    font-weight:normal;
+    cursor:default;
+}
+.cabeceraMid a span{
+    padding-top:6px;
+    padding-bottom:6px;
+    padding-right:20px;
+    padding-left:20px;
+    border-radius:3px;
 }
 
-.cabeceraMid a {   
-    padding:20px;
-    background-color:white;
-    margin-left:-5px;
+.cabeceraMid a span:hover {
+    background-color:rgb(66,139,202);
+    color:white;
+    cursor:pointer;   
 }
+.menuCostado {
+    background-color: rgb(26, 28, 28);
+    margin-left: 5px;
+    width: 255px;
+    position: absolute;
+    height: 250%;
+    border-radius:5px;
+    display:flex;
+    flex-direction:column;
+
+}
+
+.barraB {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.barraB button {
+    margin-left: -5px;
+    background-color: rgb(31,182, 219);
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+}
+
+.barraB input {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid rgb(210, 210, 210);
+    box-shadow: 1px 2px 3px rgb(210, 210, 210);
+    outline: none;
+}
+
+.barraB button svg {
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    fill: white;
+    transform: rotate(90deg);
+}
+
+.events {
+    position: absolute;
+    margin-left: 22%;
+    background-color: rgb(195, 195, 195);
+    height: 250%;
+    width: 75%;
+    display:flex;
+    border-radius:5px;
+}
+.menuCostado button {
+    height: 30px;
+    width: 250px;
+    border: none;
+    background-color: rgb(26, 28, 28);
+    padding:10px;
+    margin-top:20px;
+    text-align:left;
+    color:white;
+    font-size:15px;
+    line-height:10px;
+    border-radius:10px;
+}
+#nombreUser{
+    font-size: 15px;  
+    text-align:left;
+    line-height:0px;
+}
+.menuCostado button:hover {
+    background-color:rgb(69,55,30);
+}
+
 
 
 
